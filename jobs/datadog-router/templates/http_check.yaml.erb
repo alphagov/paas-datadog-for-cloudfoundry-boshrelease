@@ -2,7 +2,8 @@ init_config: {}
 
 instances:
   - name: gorouter
-    url: http://localhost:<%= p('router.port') %>/healthz
+    url: http://localhost:<%= p('router.port') %>/
     headers:
       User-Agent: <%= p('router.healthcheck_user_agent') %>
     collect_response_time: true
+    http_response_status_code: 200
