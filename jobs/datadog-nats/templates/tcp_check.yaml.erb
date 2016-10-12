@@ -1,0 +1,12 @@
+init_config:
+
+instances:
+  - name: NATS server
+    host: <%= spec.address %>
+    port: <%= p('nats.port') %>
+    collect_response_time: true
+
+  - name: NATS cluster
+    host: <%= spec.address %>
+    port: <%= p('nats.cluster_port') %>
+    collect_response_time: true
