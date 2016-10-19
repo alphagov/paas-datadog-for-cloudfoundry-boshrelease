@@ -1,0 +1,7 @@
+init_config:
+
+instances:
+  - name: Consul server
+    host: <%= spec.address %>
+    port: <%= p('consul.port') %>
+    collect_response_time: true
