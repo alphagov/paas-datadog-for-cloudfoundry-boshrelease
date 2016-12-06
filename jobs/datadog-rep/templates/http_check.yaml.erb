@@ -1,0 +1,11 @@
+init_config: {}
+
+instances:
+  - name: rep service endpoint
+    url: http://localhost:<%= p('diego.rep.listen_addr').split(':')[1] %>/ping
+    collect_response_time: true
+    http_response_status_code: 200
+  - name: rep debug endpoint
+    url: http://localhost:<%= p('diego.rep.debug_addr').split(':')[1] %>/debug/pprof/cmdline
+    collect_response_time: true
+    http_response_status_code: 200
