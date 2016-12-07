@@ -1,0 +1,7 @@
+init_config: {}
+
+instances:
+  - name: garden debug endpoint
+    url: http://localhost:<%= p('garden.debug_listen_address').split(':')[1] %>/debug/pprof/cmdline
+    collect_response_time: true
+    http_response_status_code: 200
