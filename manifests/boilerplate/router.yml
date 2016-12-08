@@ -1,0 +1,32 @@
+---
+releases:
+- name: routing
+  version: "0.138.0"
+  url: https://bosh.io/d/github.com/cloudfoundry-incubator/cf-routing-release?v=0.138.0
+  sha1: 10a4bc79b8a32e4120760291975810f3855119a8
+
+properties:
+  router:
+    enable_ssl: false
+    requested_route_registration_interval_in_seconds:
+    ssl_skip_validation:
+    status:
+      port:
+      user: router_user
+      password: password12345678
+    secure_cookies:
+    route_services_secret:
+    route_services_secret_decrypt_only:
+    route_services_timeout:
+    logrotate:
+    extra_headers_to_log:
+    debug_address:
+    enable_routing_api:
+    drain_wait: 15
+  uaa:
+    clients:
+      gorouter:
+        secret: secret
+    ssl:
+      port: 443
+

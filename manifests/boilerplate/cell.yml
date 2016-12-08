@@ -1,0 +1,28 @@
+---
+releases:
+- name: diego
+  version: 0.1487.0
+  url: https://bosh.io/d/github.com/cloudfoundry/diego-release?v=0.1487.0
+  sha1: f173af7117baa34cff97cf4355f958ea536a45d0
+- name: garden-runc
+  version: 0.9.0
+  url: https://bosh.io/d/github.com/cloudfoundry/garden-runc-release?v=0.9.0
+  sha1: f0f51762fd470128539ad335934b0319b07b9a04
+- name: cflinuxfs2-rootfs
+  version: 1.34.0
+  url: https://bosh.io/d/github.com/cloudfoundry/cflinuxfs2-rootfs-release?v=1.34.0
+  sha1: b1e367e228f5400439d4031a63df2600a9e213c4
+properties:
+  diego:
+    rep:
+      zone: z1
+      dropsonde_port: 1234
+      bbs:
+        api_location: bbs.service.cf.internal:8889
+        require_ssl: false
+        ca_cert: ""
+        client_cert: ""
+        client_key: ""
+      preloaded_rootfses:
+        - "cflinuxfs2:/var/vcap/packages/cflinuxfs2/rootfs"
+
