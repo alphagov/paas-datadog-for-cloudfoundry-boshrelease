@@ -1,0 +1,8 @@
+init_config:
+
+instances:
+  - name: cc api worker
+    search_string: ['cc_global_worker.api_worker']
+    exact_match: false
+    thresholds:
+      critical: [<%= p('cc.jobs.generic.number_of_workers') %>, <%= p('cc.jobs.generic.number_of_workers') %>]
