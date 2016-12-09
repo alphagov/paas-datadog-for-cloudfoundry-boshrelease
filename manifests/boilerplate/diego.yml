@@ -14,6 +14,20 @@ releases:
   sha1: b1e367e228f5400439d4031a63df2600a9e213c4
 properties:
   diego:
+    bbs:
+      api_location: bbs.service.cf.internal:8889
+      ca_cert: ""
+      client_cert: ""
+      client_key: ""
+      require_ssl: false
+    route_emitter:
+      dropsonde_port: 3457
+      bbs: (( grab properties.diego.bbs ))
+      nats:
+        machines: (( grab properties.nats.machines ))
+        user: (( grab properties.nats.user ))
+        password: (( grab properties.nats.password ))
+        port: (( grab properties.nats.port ))
     rep:
       zone: z1
       dropsonde_port: 1234
