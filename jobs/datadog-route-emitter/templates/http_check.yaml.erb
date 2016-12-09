@@ -1,0 +1,11 @@
+init_config: {}
+
+instances:
+  - name: route_emitter debug endpoint
+    url: http://localhost:<%= p('diego.route_emitter.debug_addr').split(':')[1] %>/debug/pprof/cmdline
+    collect_response_time: true
+    http_response_status_code: 200
+  - name: route_emitter consul lock
+    url: http://localhost:8500/v1/kv/v1/locks/route_emitter_lock
+    collect_response_time: true
+    http_response_status_code: 200
