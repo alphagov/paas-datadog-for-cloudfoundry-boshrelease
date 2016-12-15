@@ -1,0 +1,17 @@
+releases:
+- name: nats
+  version: "13"
+  url: https://bosh.io/d/github.com/cloudfoundry/nats-release?v=13
+  sha1: bc405a67de529a9aad41ca0cf618a522d9d2b310
+
+properties:
+  nats:
+    machines:
+    - (( grab jobs.router.networks.default.static_ips[0] ))
+    user: nats
+    password: password
+    port: 4222
+    monitor_port: 0
+    prof_port: 0
+    debug: false
+    trace: false

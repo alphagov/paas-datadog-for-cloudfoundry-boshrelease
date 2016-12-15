@@ -1,0 +1,7 @@
+init_config: {}
+
+instances:
+  - name: cc endpoint
+    url: http://localhost:<%= p('cc.external_port') %>/
+    collect_response_time: true
+    http_response_status_code: 200
