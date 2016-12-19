@@ -119,3 +119,25 @@ jobs:
   - name: default
     static_ips:
     - 10.244.10.8
+
+- name: diego
+  templates:
+  - name: route_emitter
+    release: diego
+  - name: consul_agent
+    release: consul
+  - name: datadog-agent
+    release: datadog-agent
+  - name: datadog-route-emitter
+    release: datadog-for-cloudfoundry
+  instances: 1
+  resource_pool: default
+  networks:
+  - name: default
+    static_ips:
+    - 10.244.10.10
+  properties:
+    consul:
+      agent:
+        mode: server
+
