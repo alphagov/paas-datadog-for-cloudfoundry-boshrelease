@@ -6,6 +6,11 @@ releases:
   sha1: 7277c80002fee91895bda933f7fbc64395b5240e
 
 properties:
+  datadog:
+    consul:
+      service_whitelist: ['service-a', 'service-b']
+      tags:
+        deployment: bosh-lite
   consul:
     agent:
       domain: cf.internal
