@@ -1,0 +1,10 @@
+<% if_p("datadog.consul.monitor_url") do  %>
+init_config: {}
+
+instances:
+  - name: consul_is_leader
+    url: <%= p('datadog.consul.monitor_url') %>/v1/status/leader
+    collect_response_time: true
+    http_response_status_code: 200
+    content_match: "<%= spec.address %>:<%= p('consul.server_port') %>"
+<% end %>

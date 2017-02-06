@@ -60,6 +60,8 @@ jobs:
     release: datadog-for-cloudfoundry
   - name: datadog-garden
     release: datadog-for-cloudfoundry
+  - name: datadog-consul
+    release: datadog-for-cloudfoundry
   instances: 1
   resource_pool: default
   networks:

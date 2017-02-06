@@ -1,0 +1,51 @@
+<% if_p("datadog.consul.monitor_url") do  %>
+# This check takes no init_config
+init_config:
+
+instances:
+    - url: <%= p('datadog.consul.monitor_url') %>
+
+      # Whether to perform checks against the Consul service Catalog
+      catalog_checks: yes
+
+      # Whether to enable self leader checks. Each instance with this enabled will
+      # watch for itself to become the leader and will emit an event when that
+      # happens. It is safe/expected to enable this on all nodes in a consul
+      # cluster since only the new leader will emit the (single) event. This
+      # flag takes precedence over new_leader_checks.
+      self_leader_check: yes
+
+      # Whether to enable new leader checks from this instance
+      # Note: if this is set on multiple instances/agents in the same cluster
+      # you will receive one event per leader change per instance. See
+      # self_leader_check for a more robust option.
+      new_leader_checks: yes
+
+      # Whether to enable network latency metrics collection. When enabled
+      # consul network coordinates will be retrieved and latency calculated for
+      # each node and between data centers.
+      # See https://www.consul.io/docs/internals/coordinates.html
+      <% if p("datadog.consul.network_latency_checks") == "true" or
+            p("datadog.consul.network_latency_checks") == "yes" or
+            p("datadog.consul.network_latency_checks")
+      %>
+      network_latency_checks: yes
+      <% else %>
+      network_latency_checks: no
+      <% end %>
+
+      # Services to restrict catalog querying to
+      <% if_p("datadog.consul.service_whitelist") do |service_whitelist| %>
+      service_whitelist: [<%= service_whitelist.join(',') %>]
+      <% end %>
+
+      <% if_p("datadog.consul.tags") do |tags|
+         if not tags.empty? %>
+      # Additional tags to apply to the metrics, events and service checks
+      # You should always specify tags when multiple instances of the check run
+      # on the same agent.
+      tags: <% tags.map do |k, v| %>
+        - <%= k %>:<%= v %><% end %>
+      <% end
+         end %>
+<% end %>
