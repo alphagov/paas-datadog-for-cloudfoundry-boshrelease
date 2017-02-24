@@ -1,7 +1,12 @@
 init_config: {}
 
+<% if_p("garden.debug_listen_address") do |debug_listen_address| %>
+<% debug_ip, debug_port = debug_listen_address.split(":") %>
 instances:
   - name: garden debug endpoint
-    url: http://localhost:<%= p('garden.debug_listen_address').split(':')[1] %>/debug/pprof/cmdline
+    url: http://<%= debug_ip %>:<%= debug_port %>/debug/pprof/cmdline
     collect_response_time: true
     http_response_status_code: 200
+<% else %>
+instances: []
+<% end %>
