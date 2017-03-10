@@ -1,0 +1,17 @@
+init_config:
+  default_timeout: 5
+instances:
+  - name: BBS
+    url: https://<%= p('bbs.url')%>/v1/actual_lrp_groups/list
+    <% if_p('bbs.timeout') do %>
+    timeout: <%= p('bbs.timeout') %>
+    <% end %>
+    <% if_p('bbs.client_cert') do %>
+    client_cert: <%= p('bbs.client_cert') %>
+    <% end %>
+    <% if_p('bbs.client_key') do %>
+    client_key: <%= p('bbs.client_key') %>
+    <% end %>
+    <% if_p('bbs.ca_cert') do %>
+    ca_cert: <%= p('bbs.ca_cert') %>
+    <% end %>

@@ -1,0 +1,3 @@
+[submodule "jobs/datadog-bbs/templates/integration"]
+	path = jobs/datadog-bbs/integration
+	url = https://github.com/alphagov/paas-datadog-bbs-integration.git
