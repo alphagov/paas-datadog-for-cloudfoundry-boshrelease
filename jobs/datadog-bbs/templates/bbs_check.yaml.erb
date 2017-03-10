@@ -2,7 +2,7 @@ init_config:
   default_timeout: 5
 instances:
   - name: BBS
-    url: https://<%= p('bbs.url')%>/v1/actual_lrp_groups/list
+    url: <%= p('bbs.url')%>
     <% if_p('bbs.timeout') do %>
     timeout: <%= p('bbs.timeout') %>
     <% end %>
