@@ -9,7 +9,7 @@ templates:
 properties:
   bbs.url:
     description: "URL of BBS API"
-    default: "https://localhost:8889"
+    default: "https://localhost:8889/v1/ping"
   bbs.timeout:
     description: "BBS connection timeout"
   bbs.client_cert:
