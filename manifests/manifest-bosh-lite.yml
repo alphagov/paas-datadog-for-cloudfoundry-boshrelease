@@ -60,8 +60,6 @@ jobs:
     release: datadog-for-cloudfoundry
   - name: datadog-garden
     release: datadog-for-cloudfoundry
-  - name: datadog-consul
-    release: datadog-for-cloudfoundry
   instances: 1
   resource_pool: default
   networks:
@@ -131,6 +129,27 @@ jobs:
   - name: datadog-agent
     release: datadog-agent
   - name: datadog-route-emitter
+    release: datadog-for-cloudfoundry
+  instances: 1
+  resource_pool: default
+  networks:
+  - name: default
+    static_ips:
+    - 10.244.10.10
+  properties:
+    consul:
+      agent:
+        mode: server
+
+- name: consul
+  templates:
+  - name: consul_agent
+    release: consul
+  - name: datadog-agent
+    release: datadog-agent
+  - name: datadog-consul-agent-client
+    release: datadog-for-cloudfoundry
+  - name: datadog-consul-agent-server
     release: datadog-for-cloudfoundry
   instances: 1
   resource_pool: default
