@@ -6,7 +6,7 @@ instances:
     exact_match: false
 <% if p('cc.jobs.local.number_of_workers').to_i > 0 %>
   - name: cc api worker
-    search_string: ['cc_api_worker.api']
+    search_string: ['cc_api_worker.<%= spec.job.name %>']
     exact_match: false
     thresholds:
       critical: [<%= p('cc.jobs.local.number_of_workers') %>, <%= p('cc.jobs.local.number_of_workers') %>]

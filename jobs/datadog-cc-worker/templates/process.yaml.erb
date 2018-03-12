@@ -2,7 +2,7 @@ init_config:
 
 instances:
   - name: cc api worker
-    search_string: ['cc_global_worker.api_worker']
+    search_string: ['cc_global_worker.<%= spec.job.name %>']
     exact_match: false
     thresholds:
       critical: [<%= p('cc.jobs.generic.number_of_workers') %>, <%= p('cc.jobs.generic.number_of_workers') %>]
