@@ -1,16 +1,9 @@
-<%=
-  nats_port = p('nats.port')
-  respond_to?(:if_link) && if_link("nats") do |link|
-    nats_port = link.p("nats.port")
-  end
-%>
-
 init_config:
 
 instances:
   - name: NATS server
     host: <%= spec.address %>
-    port: <%= nats_port %>
+    port: <%= p('nats.port') %>
     collect_response_time: true
 
   - name: NATS cluster

@@ -6,11 +6,6 @@ templates:
   process.yaml.erb: config/datadog-integrations/process.yaml
   tcp_check.yaml.erb: config/datadog-integrations/tcp_check.yaml
 
-consumes:
-- name: nats
-  type: nats
-  optional: true
-
 properties:
   nats.port:
     description: "Listening Port for NATS server."
