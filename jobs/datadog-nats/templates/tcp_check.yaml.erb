@@ -1,4 +1,4 @@
-<%=
+<%
   nats_port = p('nats.port')
   respond_to?(:if_link) && if_link("nats") do |link|
     nats_port = link.p("nats.port")
