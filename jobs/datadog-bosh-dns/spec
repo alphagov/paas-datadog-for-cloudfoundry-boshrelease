@@ -1,0 +1,7 @@
+---
+name: datadog-bosh-dns
+packages: []
+
+templates:
+  process.yaml.erb: config/datadog-integrations/bosh_dns_process.yaml
+
