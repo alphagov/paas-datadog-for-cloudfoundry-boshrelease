@@ -6,5 +6,5 @@ instances:
     url: <%= p('datadog.consul.monitor_url') %>/v1/status/leader
     collect_response_time: true
     http_response_status_code: 200
-    content_match: "<%= spec.address %>:<%= p('consul.server_port') %>"
+    content_match: "<%= spec.ip %>:<%= p('consul.server_port') %>"
 <% end %>
